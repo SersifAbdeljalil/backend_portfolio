@@ -1,5 +1,4 @@
 // backend/routes/contactRoutes.js
-
 const express = require('express');
 const router = express.Router();
 const { body } = require('express-validator');
@@ -8,7 +7,6 @@ const { sendContactEmail, testEmail } = require('../controllers/contactControlle
 // ========================================
 // MIDDLEWARE DE VALIDATION
 // ========================================
-
 const contactValidation = [
   body('name')
     .trim()
@@ -36,11 +34,12 @@ const contactValidation = [
 ];
 
 // ========================================
-// ROUTES
+// ROUTES - CORRIGÉ
 // ========================================
 
 // Route principale : Envoyer un message de contact
-router.post('/send', contactValidation, sendContactEmail);
+// CHANGÉ de '/send' à '/' pour correspondre à /api/contact
+router.post('/', contactValidation, sendContactEmail);
 
 // Route de test : Vérifier la configuration email
 router.get('/test', testEmail);
