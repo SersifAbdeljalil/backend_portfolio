@@ -1,4 +1,3 @@
-
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -46,18 +45,6 @@ app.use((err, req, res, next) => {
     success: false,
     message: 'Une erreur interne est survenue'
   });
-});
-
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-  console.log('');
-  console.log('╔═══════════════════════════════════════════╗');
-  console.log(`║  🚀 Serveur démarré sur le port ${PORT}     ║`);
-  console.log(`║  📧 Email: ${process.env.EMAIL_USER}        ║`);
-  console.log(`║  🌐 Frontend: ${process.env.FRONTEND_URL}  ║`);
-  console.log('╚═══════════════════════════════════════════╝');
-  console.log('');
 });
 
 module.exports = app;
