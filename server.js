@@ -47,4 +47,21 @@ app.use((err, req, res, next) => {
   });
 });
 
+// Pour Vercel - export l'app sans écouter de port
+if (process.env.VERCEL) {
+  module.exports = app;
+} else {
+  // Pour le développement local
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log('');
+    console.log('╔═══════════════════════════════════════════╗');
+    console.log(`║  🚀 Serveur démarré sur le port ${PORT}     ║`);
+    console.log(`║  📧 Email: ${process.env.EMAIL_USER}        ║`);
+    console.log(`║  🌐 Frontend: ${process.env.FRONTEND_URL}  ║`);
+    console.log('╚═══════════════════════════════════════════╝');
+    console.log('');
+  });
+}
+
 module.exports = app;
